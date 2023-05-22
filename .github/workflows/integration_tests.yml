@@ -8,9 +8,9 @@ on:
 jobs:
   integration_tests:
     name: Run integration tests
+    if: ${{ !always() }}
     runs-on: ubuntu-latest
     steps:
-      - if: ${{ !always() }}
       - name: Clone Repository
         uses: actions/checkout@v3
       - uses: actions/setup-go@v4
