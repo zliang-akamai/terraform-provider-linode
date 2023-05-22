@@ -1,5 +1,6 @@
 # Terraform Provider for Linode
 
+
 - Website: <https://www.terraform.io>
 - Documentation: <https://www.terraform.io/docs/providers/linode/index.html>
 - [![Gitter chat](https://badges.gitter.im/hashicorp-terraform/Lobby.png)](https://gitter.im/hashicorp-terraform/Lobby)
