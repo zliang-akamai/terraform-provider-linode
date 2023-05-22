@@ -9,13 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.issue.pull_request }}
     steps:
-      - name: echo "${{ github.event.issue_comment.sender.login }}"
-        shell: bash
-        run: echo "${{ github.event.issue_comment.sender.login }}"
-      - name: echo ${{ github.event }}
-        shell: bash
-        run: echo ${{ github.event }}
-
       - uses: octokit/graphql-action@v2.x
         id: get_permission
         with:
@@ -30,7 +23,7 @@ jobs:
               }
             }
           owner: ${{ github.repository_owner }}
-          collaborator: ${{ github.event.issue_comment.sender.login }}
+          collaborator: ${{ github.actor }}
           repo: ${{ github.event.repository.name }}
         env:
           GITHUB_TOKEN: ${{ secrets.TEST_TOKEN }}
