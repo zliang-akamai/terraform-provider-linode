@@ -32,7 +32,7 @@ jobs:
           (${{ fromJson(steps.get_permission.outputs.data).repository.collaborators.edges[0].permission }} == "MAINTAIN") ||
           (${{ fromJson(steps.get_permission.outputs.data).repository.collaborators.edges[0].permission }} == "WRITE")
         run: "echo success"
-
+      - run: "echo 'latest release: ${{ fromJson(steps.get_permission.outputs.data).repository.collaborators.edges[0].permission }} == 'MAINTAIN' }}'"
 #       - name: Slash Command Dispatch
 #         uses: peter-evans/slash-command-dispatch@v1.2.0
 #         with:
