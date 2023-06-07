@@ -112,6 +112,10 @@ func (r *Resource) Read(
 	req resource.ReadRequest,
 	resp *resource.ReadResponse,
 ) {
+	resp.Diagnostics.AddError("I am a bug", "I am breaking this resource, hahahaha!!!")
+	if resp.Diagnostics.HasError() {
+		return
+	}
 	client := r.client
 
 	var data ResourceModel
