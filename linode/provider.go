@@ -16,6 +16,7 @@ import (
 	"github.com/linode/terraform-provider-linode/v2/linode/databasepostgresql"
 	"github.com/linode/terraform-provider-linode/v2/linode/domain"
 	"github.com/linode/terraform-provider-linode/v2/linode/domainrecord"
+	"github.com/linode/terraform-provider-linode/v2/linode/examplesdkv2resource"
 	"github.com/linode/terraform-provider-linode/v2/linode/firewall"
 	"github.com/linode/terraform-provider-linode/v2/linode/firewalldevice"
 	"github.com/linode/terraform-provider-linode/v2/linode/helper"
@@ -147,6 +148,7 @@ func Provider() *schema.Provider {
 			"linode_object_storage_object":    obj.Resource(),
 			"linode_user":                     user.Resource(),
 			"linode_volume":                   volume.Resource(),
+			"linode_example_sdkv2_block":      examplesdkv2resource.Resource(),
 		},
 	}
 
