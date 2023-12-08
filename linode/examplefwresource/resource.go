@@ -17,16 +17,19 @@ var frameworkResourceSchema = schema.Schema{
 		},
 	},
 	Blocks: map[string]schema.Block{
-		"example_block_attr": schema.SingleNestedBlock{
-			Attributes: map[string]schema.Attribute{
-				"example_nested_attr": schema.StringAttribute{
-					Optional: true,
-					Computed: true,
-				},
-				"example_nested_attr_with_default": schema.StringAttribute{
-					Default:  stringdefault.StaticString("default"),
-					Optional: true,
-					Computed: true,
+		"example_block_attr": schema.ListNestedBlock{
+			NestedObject: schema.NestedBlockObject{
+				Attributes: map[string]schema.Attribute{
+					"example_nested_attr": schema.StringAttribute{
+						Default:  stringdefault.StaticString("default"),
+						Optional: true,
+						Computed: true,
+					},
+					"example_nested_attr_with_default": schema.StringAttribute{
+						Default:  stringdefault.StaticString("default"),
+						Optional: true,
+						Computed: true,
+					},
 				},
 			},
 		},
@@ -80,14 +83,8 @@ func (r *Resource) Create(
 		return
 	}
 
-	// var block []map[string]string
-	// resp.Diagnostics.Append(data.ExampleBlockAttr.ElementsAs(ctx, &block, false)...)
-	// if resp.Diagnostics.HasError() {
-	// 	return
-	// }
-
 	data.ComputeValues()
-
+	data.ID = types.StringValue("12345")
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
